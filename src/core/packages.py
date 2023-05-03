@@ -19,14 +19,14 @@ class PrelineUnPKG(CDNPackage):
 
 
 class HTMXUnPKG(CDNPackage):
-    name = "HTMX"
+    name = "htmx.org"
     cdn_provider = UnPKG
     need_tailwind = False
     paths = HTMX_PATHS
 
 
 class AlpineUnPkg(CDNPackage):
-    name = "alpine"
+    name = "alpinejs"
     cdn_provider = UnPKG
     need_tailwind = False
     paths = APLINE_PATHS

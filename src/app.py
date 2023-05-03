@@ -5,7 +5,6 @@ import curses
 import os
 
 
-
 CURRENT_PATH = os.getcwd()
 
 choices_menu = [(pkg.get_full_name().capitalize(), pkg) for pkg in PACKAGES_LIST]
@@ -15,8 +14,9 @@ def print_menu(stdscr, selected_row_idx, user_choices):
     # Clear the screen
     stdscr.clear()
 
-    stdscr.addstr('Press "Enter" for checking the dependency, then press "d" for confirming your choices')
-
+    stdscr.addstr(
+        'Press "Enter" for checking the dependency, then press "d" for confirming your choices'
+    )
 
     # Print the menu items
     for idx, item in enumerate(choices_menu):
@@ -85,7 +85,7 @@ def main(stdscr):
                 user_choices.remove(current_row)
             else:
                 user_choices.append(current_row)
-        
+
         elif key == ord("d"):
             return user_choices
 
@@ -95,16 +95,15 @@ def main(stdscr):
 
 if __name__ == "__main__":
 
-    #? =================  Collect Data ====================
+    # ? =================  Collect Data ====================
     user_choices_indexes = curses.wrapper(main)
 
     user_choices = [choices_menu[i][1] for i in user_choices_indexes]
-    
 
-    #? ================ Actions ===========================
+    # ? ================ Actions ===========================
     # packages
     if user_choices:
-        
+
         controller = SysytemControlWithPackage(user_choices[0])
         controller.get_package("static")
 
@@ -114,6 +113,4 @@ if __name__ == "__main__":
                 controller.get_package("static")
 
     # create django project
-    call_command("startproject", "project_core", ".")
-
-
+    # call_command("startproject", "project_core", ".")

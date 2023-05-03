@@ -5,7 +5,6 @@ import os
 import re
 
 
-
 class SysytemControlWithPackage:
     def __init__(self, package: CDNPackage) -> None:
         self.__package = package
@@ -14,7 +13,7 @@ class SysytemControlWithPackage:
     @property
     def package(self):
         return self.__package
-    
+
     @package.setter
     def package(self, new_package):
         self.__package = new_package

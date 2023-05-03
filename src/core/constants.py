@@ -1,7 +1,6 @@
 import os
 
 
-
 BOOTSTRAP_PATHS = [
     {
         "url_path": "dist/css/bootstrap.min.css",
@@ -40,6 +39,6 @@ HTMX_PATHS = [
 APLINE_PATHS = [
     {
         "url_path": "dist/cdn.min.js",
-        "output_path": os.path.join("js", "alpine.min.js")        
+        "output_path": os.path.join("js", "alpine.min.js")
     }
 ]
