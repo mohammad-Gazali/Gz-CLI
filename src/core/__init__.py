@@ -6,5 +6,6 @@ PACKAGES_LIST: list[CDNPackage] = [
     packages.BootstrapUnPKG,
     packages.PrelineUnPKG,
     packages.HTMXUnPKG,
-    packages.AlpineUnPkg,
+    packages.AlpineUnPKG,
+    packages.FlowbiteUnPKG,
 ]

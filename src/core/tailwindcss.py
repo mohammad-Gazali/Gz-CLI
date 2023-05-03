@@ -1,6 +1,8 @@
 import os
 
 
+# TODO: installing plugins
+
 class TailwindCSS:
     @staticmethod
     def add_watch_script():
@@ -74,6 +76,7 @@ class TailwindCSS:
     @staticmethod
     def install_tailwind():
         os.system("npm install -D tailwindcss postcss autoprefixer")
+        os.system("npx tailwindcss init -p")
 
     @staticmethod
     def get_tailwindcss():

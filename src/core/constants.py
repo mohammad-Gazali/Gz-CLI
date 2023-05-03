@@ -42,3 +42,10 @@ APLINE_PATHS = [
         "output_path": os.path.join("js", "alpine.min.js")
     }
 ]
+
+FLOWBITE_PATHS = [
+    {
+        "url_path": "dist/flowbite.min.js",
+        "output_path": os.path.join("js", "flowbite.min.js")
+    }
+]

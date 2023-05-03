@@ -1,6 +1,6 @@
 from core.abstract import CDNPackage
 from core.providers import UnPKG
-from core.constants import BOOTSTRAP_PATHS, PRELINE_PATHS, HTMX_PATHS, APLINE_PATHS
+from core.constants import BOOTSTRAP_PATHS, PRELINE_PATHS, HTMX_PATHS, APLINE_PATHS, FLOWBITE_PATHS
 
 
 
@@ -25,8 +25,15 @@ class HTMXUnPKG(CDNPackage):
     paths = HTMX_PATHS
 
 
-class AlpineUnPkg(CDNPackage):
+class AlpineUnPKG(CDNPackage):
     name = "alpinejs"
     cdn_provider = UnPKG
     need_tailwind = False
     paths = APLINE_PATHS
+
+
+class FlowbiteUnPKG(CDNPackage):
+    name = "flowbite"
+    cdn_provider = UnPKG
+    need_tailwind = True
+    paths = FLOWBITE_PATHS

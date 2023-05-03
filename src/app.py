@@ -96,11 +96,15 @@ def main(stdscr):
 if __name__ == "__main__":
 
     # ? =================  Collect Data ====================
+
     user_choices_indexes = curses.wrapper(main)
 
     user_choices = [choices_menu[i][1] for i in user_choices_indexes]
 
+
+
     # ? ================ Actions ===========================
+
     # packages
     if user_choices:
 
@@ -113,4 +117,4 @@ if __name__ == "__main__":
                 controller.get_package("static")
 
     # create django project
-    # call_command("startproject", "project_core", ".")
+    call_command("startproject", "project_core", ".")
