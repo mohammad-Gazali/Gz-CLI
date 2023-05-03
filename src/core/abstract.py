@@ -18,4 +18,4 @@ class CDNPackage:
 
     @classmethod
     def get_full_name(cls):
-        return f"{cls.name} ({cls.cdn_provider.name})"
+        return f"{cls.name}"
