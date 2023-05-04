@@ -1,4 +1,4 @@
-from core import packages
+from cdn_packages import packages
 from core.abstract import CDNPackage
 
 

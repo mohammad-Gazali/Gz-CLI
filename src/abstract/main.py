@@ -1,4 +1,6 @@
 from typing import List, Dict
+from abc import ABC, abstractstaticmethod, abstractclassmethod
+
 
 
 class CDNProvider:
@@ -19,3 +21,21 @@ class CDNPackage:
     @classmethod
     def get_full_name(cls):
         return f"{cls.name}"
+    
+
+class NPMPackage(ABC):
+    name: str
+
+    @staticmethod
+    def extra_actions() -> None:
+        pass
+
+    @abstractstaticmethod
+    @staticmethod
+    def get_package() -> None:
+        pass
+
+    @abstractclassmethod
+    @classmethod
+    def get_full_name(cls) -> str:
+        pass

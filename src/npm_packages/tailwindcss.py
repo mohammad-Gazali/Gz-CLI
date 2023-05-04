@@ -1,7 +1,6 @@
 import os
 
 
-# TODO: installing plugins
 
 class TailwindCSS:
     @staticmethod
@@ -63,12 +62,12 @@ class TailwindCSS:
                     "module.exports = {\n",
                     '\tdarkMode: "class",\n',
                     "\tcontent: [\n",
-                    '\t\t"./templates/**/*.{html}",\n',
+                    '\t\t"./templates/**/*.html",\n',
                     "\t],\n",
                     "\ttheme: {\n",
                     "\t\textend: {},\n",
                     "\t},\n",
-                    "\tplugins:[]\n",
+                    "\tplugins: []\n",
                     "}",
                 ]
             )

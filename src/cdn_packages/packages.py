@@ -1,6 +1,6 @@
-from core.abstract import CDNPackage
-from core.providers import UnPKG
-from core.constants import BOOTSTRAP_PATHS, PRELINE_PATHS, HTMX_PATHS, APLINE_PATHS, FLOWBITE_PATHS
+from abstract.main import CDNPackage
+from cdn_packages.providers import UnPKG
+from cdn_packages.constants import BOOTSTRAP_PATHS, PRELINE_PATHS, HTMX_PATHS, APLINE_PATHS, FLOWBITE_PATHS
 
 
 

@@ -1,5 +1,5 @@
-from core import PACKAGES_LIST
-from core.controller import SysytemControlWithPackage
+from cdn_packages import PACKAGES_LIST
+from controller.main import SysytemControlWithPackage
 from django.core.management import call_command
 import curses
 import os
@@ -80,7 +80,7 @@ def main(stdscr):
         elif key == curses.KEY_DOWN and current_row < len(choices_menu) - 1:
             current_row += 1
 
-        elif key == ord("\n"):
+        elif key in [ord("\n"), ord(" ")]:
             if current_row in user_choices:
                 user_choices.remove(current_row)
             else:
@@ -93,15 +93,13 @@ def main(stdscr):
         print_menu(stdscr, current_row, user_choices)
 
 
-if __name__ == "__main__":
+def main_app_function():
 
     # ? =================  Collect Data ====================
 
     user_choices_indexes = curses.wrapper(main)
 
     user_choices = [choices_menu[i][1] for i in user_choices_indexes]
-
-
 
     # ? ================ Actions ===========================
 
@@ -118,3 +116,7 @@ if __name__ == "__main__":
 
     # create django project
     call_command("startproject", "project_core", ".")
+
+
+if __name__ == "__main__":
+    main_app_function()
