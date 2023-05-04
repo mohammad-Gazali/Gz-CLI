@@ -22,30 +22,21 @@ BOOTSTRAP_PATHS = [
 
 
 PRELINE_PATHS = [
-    {
-        "url_path": "dist/preline.js",
-        "output_path": os.path.join("js", "preline.min.js")
-    }
+    {"url_path": "dist/preline.js", "output_path": os.path.join("js", "preline.min.js")}
 ]
 
 
 HTMX_PATHS = [
-    {
-        "url_path": "dist/htmx.min.js",
-        "output_path": os.path.join("js", "htmx.min.js")
-    }
+    {"url_path": "dist/htmx.min.js", "output_path": os.path.join("js", "htmx.min.js")}
 ]
 
 APLINE_PATHS = [
-    {
-        "url_path": "dist/cdn.min.js",
-        "output_path": os.path.join("js", "alpine.min.js")
-    }
+    {"url_path": "dist/cdn.min.js", "output_path": os.path.join("js", "alpine.min.js")}
 ]
 
 FLOWBITE_PATHS = [
     {
         "url_path": "dist/flowbite.min.js",
-        "output_path": os.path.join("js", "flowbite.min.js")
+        "output_path": os.path.join("js", "flowbite.min.js"),
     }
 ]

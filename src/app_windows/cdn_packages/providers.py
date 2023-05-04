@@ -1,4 +1,4 @@
-from abstract.main import CDNProvider
+from .abstract import CDNProvider
 
 
 class UnPKG(CDNProvider):

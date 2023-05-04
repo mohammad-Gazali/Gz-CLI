@@ -1,5 +1,5 @@
-from cdn_packages import packages
-from core.abstract import CDNPackage
+from . import packages
+from .abstract import CDNPackage
 
 
 PACKAGES_LIST: list[CDNPackage] = [

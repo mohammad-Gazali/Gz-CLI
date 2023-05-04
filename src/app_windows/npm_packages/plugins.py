@@ -1,6 +1,9 @@
 import os
-from tailwindcss import TailwindCSS
 
+try:
+    from tailwindcss import TailwindCSS
+except ModuleNotFoundError:
+    from app_windows.npm_packages.tailwindcss import TailwindCSS
 
 
 class TailwindPlugin:
@@ -8,7 +11,7 @@ class TailwindPlugin:
 
     @classmethod
     def get_full_name(cls) -> str:
-        package_identifier = cls.name.split('/')[-1]
+        package_identifier = cls.name.split("/")[-1]
         return f"tailwind plugin {package_identifier}"
 
     @classmethod
@@ -22,20 +25,22 @@ class TailwindPlugin:
             file_content = file.read()
 
             start_index = file_content.find("plugins: [") + 10
-            
+
             file_content_list = list(file_content)
 
-
             if file_content[start_index] == "]":
-                file_content_list.insert(start_index, f'\n\t\trequire("{cls.name}"),\n\t')
+                file_content_list.insert(
+                    start_index, f'\n\t\trequire("{cls.name}"),\n\t'
+                )
 
             elif file_content[start_index] == "\n":
                 file_content_list.insert(start_index, f'\n\t\trequire("{cls.name}"),\t')
 
             else:
                 TailwindCSS.add_config_file()
-                file_content_list.insert(start_index, f'\n\t\trequire("{cls.name}"),\n\t')
-
+                file_content_list.insert(
+                    start_index, f'\n\t\trequire("{cls.name}"),\n\t'
+                )
 
             new_content = "".join(file_content_list)
 
@@ -45,8 +50,8 @@ class TailwindPlugin:
             file.write(new_content)
 
 
+# ? ======= Plugins =======
 
-#? ======= Plugins =======
 
 class TailwindFormsPlugin(TailwindPlugin):
     name = "@tailwindcss/forms"
@@ -62,7 +67,6 @@ class TailwindAspectRatioPlugin(TailwindPlugin):
 
 class TailwindContainerQueriesPlugin(TailwindPlugin):
     name = "@tailwindcss/container-queries"
-
 
 
 PLUGINS_LIST: list[TailwindPlugin] = [

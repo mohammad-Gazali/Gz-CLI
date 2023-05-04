@@ -1,9 +1,8 @@
-from abstract.main import CDNPackage
-from npm_packages.tailwindcss import TailwindCSS
+from app_windows.cdn_packages.abstract import CDNPackage
+from app_windows.npm_packages.tailwindcss import TailwindCSS
 import requests
 import os
 import re
-
 
 
 class SysytemControlWithPackage:

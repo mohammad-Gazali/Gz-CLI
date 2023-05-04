@@ -1,7 +1,6 @@
 import os
 
 
-
 class TailwindCSS:
     @staticmethod
     def add_watch_script():
@@ -73,9 +72,22 @@ class TailwindCSS:
             )
 
     @staticmethod
+    def add_postcss_config_file():
+        with open("postcss.config.js", "w") as file:
+            file.writelines(
+                [
+                    "module.exports = {\n",
+                    "\tplugins: {\n",
+                    "\t\ttailwindcss: {},\n",
+                    "\t\tautoprefixer: {},\n",
+                    "\t},\n",
+                    "}",
+                ]
+            )
+
+    @staticmethod
     def install_tailwind():
         os.system("npm install -D tailwindcss postcss autoprefixer")
-        os.system("npx tailwindcss init -p")
 
     @staticmethod
     def get_tailwindcss():
@@ -83,3 +95,4 @@ class TailwindCSS:
         TailwindCSS.add_watch_script()
         TailwindCSS.add_tailwind_files()
         TailwindCSS.add_config_file()
+        TailwindCSS.add_postcss_config_file()
