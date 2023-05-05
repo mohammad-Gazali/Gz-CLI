@@ -42,5 +42,6 @@ def main_app_function():
     # * 3. common acctions
     common_actions_func()
 
+
 if __name__ == "__main__":
     main_app_function()

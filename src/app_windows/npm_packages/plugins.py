@@ -69,9 +69,14 @@ class TailwindContainerQueriesPlugin(TailwindPlugin):
     name = "@tailwindcss/container-queries"
 
 
+class DaisyuiPlugin(TailwindPlugin):
+    name = "daisyui"
+
+
 PLUGINS_LIST: list[TailwindPlugin] = [
     TailwindFormsPlugin,
     TailwindTypographyPlugin,
     TailwindAspectRatioPlugin,
     TailwindContainerQueriesPlugin,
+    DaisyuiPlugin,
 ]

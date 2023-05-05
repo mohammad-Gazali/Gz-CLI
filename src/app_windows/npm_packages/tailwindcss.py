@@ -62,6 +62,7 @@ class TailwindCSS:
                     '\tdarkMode: "class",\n',
                     "\tcontent: [\n",
                     '\t\t"./templates/**/*.html",\n',
+                    '\t\t"./static/**/*.js",\n',
                     "\t],\n",
                     "\ttheme: {\n",
                     "\t\textend: {},\n",

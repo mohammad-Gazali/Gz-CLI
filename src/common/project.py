@@ -44,3 +44,5 @@ def common_actions_func():
             os.mkdir("media")
         except FileExistsError:
             pass
+
+    # TODO: editing urls.py for static files

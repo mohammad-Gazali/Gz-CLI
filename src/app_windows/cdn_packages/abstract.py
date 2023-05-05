@@ -18,4 +18,4 @@ class CDNPackage:
 
     @classmethod
     def get_full_name(cls):
-        return f"{cls.name}"
+        return f"{cls.name} (with tailwind)" if cls.need_tailwind else cls.name
