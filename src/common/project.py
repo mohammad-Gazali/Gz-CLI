@@ -1,48 +1,28 @@
 from django.core.management import call_command
-import os
+
+try:
+    from .functions import edit_settings_file, edit_urls_file, add_gitignore_file
+except ImportError:
+    from functions import edit_settings_file, edit_urls_file, add_gitignore_file
 
 
-def common_actions_func():
-    project_name = "project_core"
+
+def common_actions_func(project_name):
 
     # create django project
     call_command("startproject", project_name, ".")
 
-    settings_path = os.path.join(project_name, "settings.py")
+    # edit settings.py
+    edit_settings_file(project_name)
 
-    # editing settings.py file
-    with open(settings_path, "r+") as file:
-        file_content_lines = file.readlines()
+    # edit urls.py
+    edit_urls_file(project_name)
 
-        STATIC_URL_line_index = None
+    # add .gitignore file
+    add_gitignore_file()
 
-        for index, line in enumerate(file_content_lines):
-            if line.count("STATIC_URL") > 0:
-                STATIC_URL_line_index = index
-                break
+    # TODO: add README.md file
 
-        if STATIC_URL_line_index is not None:
-            first_part = file_content_lines[:STATIC_URL_line_index]
-            second_part = file_content_lines[STATIC_URL_line_index + 1 :]
-            new_part = [
-                "\n# static files configurations\n",
-                file_content_lines[STATIC_URL_line_index],
-                'STATICFILES_DIRS = [BASE_DIR / "static"]\n',
-                'STATIC_ROOT = BASE_DIR / "staticfiles"\n',
-                "\n# media files configurations\n",
-                'MEDIA_URL = "/media/"\n',
-                'MEDIA_ROOT = BASE_DIR / "media"\n\n',
-            ]
+    # TODO: add configurations to .env file
 
-            file_content_lines = first_part + new_part + second_part
-
-        file.seek(0)
-
-        file.writelines(file_content_lines)
-
-        try:
-            os.mkdir("media")
-        except FileExistsError:
-            pass
-
-    # TODO: editing urls.py for static files
+    # TODO: add .env file

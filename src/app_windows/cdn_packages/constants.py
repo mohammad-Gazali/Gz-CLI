@@ -40,3 +40,7 @@ FLOWBITE_PATHS = [
         "output_path": os.path.join("js", "flowbite.min.js"),
     }
 ]
+
+AXIOS_PATHS = [
+    {"url_path": "dist/axios.min.js", "output_path": os.path.join("js", "axios.min.js")}
+]

@@ -41,7 +41,9 @@ class SysytemControlWithPackage:
                 )
 
             elif file_content[start_index] == "\n":
-                file_content_list.insert(start_index, f'\n\t\trequire("{package}/plugin"),\t')
+                file_content_list.insert(
+                    start_index, f'\n\t\trequire("{package}/plugin"),\t'
+                )
 
             new_content = "".join(file_content_list)
 

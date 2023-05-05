@@ -6,6 +6,7 @@ from .constants import (
     HTMX_PATHS,
     APLINE_PATHS,
     FLOWBITE_PATHS,
+    AXIOS_PATHS,
 )
 
 
@@ -42,3 +43,10 @@ class FlowbiteUnPKG(CDNPackage):
     cdn_provider = UnPKG
     need_tailwind = True
     paths = FLOWBITE_PATHS
+
+
+class AxiosUnPKG(CDNPackage):
+    name = "axios"
+    cdn_provider = UnPKG
+    need_tailwind = False
+    paths = AXIOS_PATHS

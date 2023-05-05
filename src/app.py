@@ -8,6 +8,7 @@ from app_windows.tailwind_plugins_window import (
 import curses
 
 
+
 def main_app_function():
 
     # ? =================  Collect Data ====================
@@ -40,7 +41,7 @@ def main_app_function():
             choice.get_package()
 
     # * 3. common acctions
-    common_actions_func()
+    common_actions_func("project_core")
 
 
 if __name__ == "__main__":
