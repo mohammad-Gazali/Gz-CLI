@@ -1,9 +1,9 @@
 import os
 
 try:
-    from .constants import GITIGNORE_FILE_CONTENT
+    from .constants import GITIGNORE_FILE_CONTENT, README_FILE_CONTENT
 except ImportError:
-    from constants import GITIGNORE_FILE_CONTENT
+    from constants import GITIGNORE_FILE_CONTENT, README_FILE_CONTENT
 
 
 def edit_settings_file(project_name):
@@ -85,3 +85,54 @@ def edit_urls_file(project_name):
 def add_gitignore_file():
     with open(".gitignore", "w") as file:
         file.write(GITIGNORE_FILE_CONTENT)
+
+
+def add_vscode_workspace():
+    
+    os.mkdir(".vscode")
+    
+    workspace_path = os.path.join(".vscode", "settings.json")
+
+    with open(workspace_path, "w") as file:
+        file.writelines([
+            "{\n",
+            '\t"python.analysis.typeCheckingMode": "basic",\n'
+            '\t"python.analysis.autoImportCompletions": true,\n',
+	        '\t"python.analysis.packageIndexDepths": [\n',
+		    "\t\t{\n",
+			'\t\t\t"name": "django",\n',
+			'\t\t\t"depth": 4\n',
+		    "\t\t},\n",
+	        "\t],\n",
+            "}\n"
+        ])
+
+
+def add_readme_file():
+    with open("README.md", "w") as file:
+        file.write(README_FILE_CONTENT)
+
+
+def add_env_file():
+    # TODO: add secret key
+    with open(".env", "w") as file:
+        file.writelines([
+            "# project configurations \n",
+            "SECRET_KEY=\n",
+            "DEBUG=True\n",
+            "WEBSITE_URL=127.0.0.1:8000\n",
+        ])
+
+    with open(".env.example", "w") as file:
+        file.writelines([
+            "# project configurations \n",
+            "SECRET_KEY=\n",
+            "DEBUG=\n",
+            "WEBSITE_URL=\n",
+        ])
+
+
+def add_git_repo():
+    os.system("git init")
+    os.system("git add .")
+    os.system("git commit -m \"initial commit\"")

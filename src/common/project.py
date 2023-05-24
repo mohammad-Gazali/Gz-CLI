@@ -1,13 +1,29 @@
 from django.core.management import call_command
 
 try:
-    from .functions import edit_settings_file, edit_urls_file, add_gitignore_file
+    from .functions import (
+        edit_settings_file,
+        edit_urls_file,
+        add_gitignore_file,
+        add_vscode_workspace,
+        add_readme_file,
+        add_env_file,
+        add_git_repo
+    )
 except ImportError:
-    from functions import edit_settings_file, edit_urls_file, add_gitignore_file
+    from functions import (
+        edit_settings_file,
+        edit_urls_file,
+        add_gitignore_file,
+        add_vscode_workspace,
+        add_readme_file,
+        add_env_file,
+        add_git_repo
+    )
 
 
 
-def common_actions_func(project_name):
+def common_actions_func(project_name: str, workspace: bool, git: bool):
 
     # create django project
     call_command("startproject", project_name, ".")
@@ -21,8 +37,21 @@ def common_actions_func(project_name):
     # add .gitignore file
     add_gitignore_file()
 
-    # TODO: add README.md file
+    # add README.md file
+    add_readme_file()
+
+    # add .env file
+    add_env_file()
 
     # TODO: add configurations to .env file
 
-    # TODO: add .env file
+
+    #? ========= Optional Configurations =========
+
+    # add .vscode for workspace configurations
+    if workspace:
+        add_vscode_workspace()
+
+    # add init git
+    if git:
+        add_git_repo()

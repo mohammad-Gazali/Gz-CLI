@@ -159,3 +159,98 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 """
+
+
+
+
+README_FILE_CONTENT = r"""This is project is django project that was created with Gazali CLI python library which is a package was built for making django project building process faster and easier.
+
+## Getting Started
+---
+
+<br />
+
+### __1- creating a virtual environment__
+
+first we need a virtual environment with python.
+In windows we can write this command in the terminal inside root directory: 
+
+```bash
+python -m venv venv
+```
+
+and for linux and macOS (also inside the root directory):
+```bash
+python3 -m venv venv
+```
+
+<br />
+
+### __2- activating the virtual environment__
+
+second we want to activate this virtual environment. For windows we can activate it by running this command in the same directory that virtual environment has:
+```bash
+venv\Scripts\activate
+```
+
+and for linux and macOS:
+
+```bash
+source venv/bin/activate
+```
+
+<br/>
+
+### __3- installing dependicies__
+
+Then we should install the required modules for this project by running this command when the virtual environment is activated.
+
+```bash
+pip install -r requirements.txt
+```
+
+<br/>
+
+### __4- migrating the data to the database__
+
+when we are activating the venv we should run these commands to migrate the data to the database:
+
+```bash
+python manage.py makemigrations
+```
+
+then:
+
+```bash
+python manage.py migrate
+```
+
+<br/>
+
+### __5- creating an admin for the website__
+
+if we want to access the admin url through  `/admin `end point then we should create it the admin by running this command:
+
+```bash
+python manage.py createsuperuser
+```
+
+then we can determine his information.
+
+<br/>
+
+### __6- running the server__
+
+Finally, we can run the server like this:
+
+```bash
+python manage.py runserver
+```
+
+we can go to http://localhost:8000 to access the website, and access the admin panel by going to http://localhost:8000/admin.
+
+we can deactivate the venv by running this command:
+```bash
+deactivate
+```
+"""
