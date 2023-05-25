@@ -161,8 +161,6 @@ cython_debug/
 """
 
 
-
-
 README_FILE_CONTENT = r"""This is project is django project that was created with Gazali CLI python library which is a package was built for making django project building process faster and easier.
 
 ## Getting Started

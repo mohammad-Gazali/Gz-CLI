@@ -11,23 +11,23 @@ def main_app_function():
 
     # ? =================  Collect Data ====================
 
-    #* 1. cdn_packages
+    # * 1. cdn_packages
     cdn_user_choices_indexes = curses.wrapper(cdn_packages_main)
     cdn_user_choices = [cdn_choices_menu[i][1] for i in cdn_user_choices_indexes]
 
-    #* 2. tailwind_plugins
+    # * 2. tailwind_plugins
     tailwind_plugins_user_choices_indexes = curses.wrapper(tailwind_plugins_main)
     tailwind_plugins_user_choices = [
         tailwind_plugins_choices_menu[i][1]
         for i in tailwind_plugins_user_choices_indexes
     ]
 
-    #* 3. extra choices
+    # * 3. extra choices
     extra_choices_indexes = curses.wrapper(extra_main)
 
     # ? ================ Actions ===========================
 
-    #* 1. cdn_packages
+    # * 1. cdn_packages
     if cdn_user_choices:
         controller = SysytemControlWithPackage(cdn_user_choices[0])
         controller.get_package("static")
@@ -36,12 +36,12 @@ def main_app_function():
                 controller.package = pkg
                 controller.get_package("static")
 
-    #* 2. tailwind_plugins
+    # * 2. tailwind_plugins
     if tailwind_plugins_user_choices:
         for choice in tailwind_plugins_user_choices:
             choice.get_package()
 
-    #* 3. common actions
+    # * 3. common actions
     workspace = False
     git = False
 
@@ -53,11 +53,7 @@ def main_app_function():
     if extra_choices_indexes.count(1) > 0:
         git = True
 
-    common_actions_func(
-        project_name="project_core",
-        workspace=workspace,
-        git=git
-    )
+    common_actions_func(project_name="project_core", workspace=workspace, git=git)
 
 
 if __name__ == "__main__":

@@ -3,7 +3,7 @@ import curses
 
 extra_choices_menu = [
     "adding vscode workspace configurations (you need to have git in your machine)",
-    "initializing git repository"
+    "initializing git repository",
 ]
 
 
@@ -68,19 +68,13 @@ def extra_main(stdscr):
         if key == curses.KEY_UP and current_row == 0:
             current_row = len(extra_choices_menu) - 1
 
-        elif (
-            key == curses.KEY_DOWN
-            and current_row == len(extra_choices_menu) - 1
-        ):
+        elif key == curses.KEY_DOWN and current_row == len(extra_choices_menu) - 1:
             current_row = 0
 
         elif key == curses.KEY_UP and current_row > 0:
             current_row -= 1
 
-        elif (
-            key == curses.KEY_DOWN
-            and current_row < len(extra_choices_menu) - 1
-        ):
+        elif key == curses.KEY_DOWN and current_row < len(extra_choices_menu) - 1:
             current_row += 1
 
         elif key in [ord("\n"), ord(" ")]:

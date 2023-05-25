@@ -8,7 +8,8 @@ try:
         add_vscode_workspace,
         add_readme_file,
         add_env_file,
-        add_git_repo
+        add_git_repo,
+        env_file_configurations
     )
 except ImportError:
     from functions import (
@@ -18,9 +19,9 @@ except ImportError:
         add_vscode_workspace,
         add_readme_file,
         add_env_file,
-        add_git_repo
+        add_git_repo,
+        env_file_configurations
     )
-
 
 
 def common_actions_func(project_name: str, workspace: bool, git: bool):
@@ -43,10 +44,10 @@ def common_actions_func(project_name: str, workspace: bool, git: bool):
     # add .env file
     add_env_file()
 
-    # TODO: add configurations to .env file
+    # add configurations for .env file
+    env_file_configurations()
 
-
-    #? ========= Optional Configurations =========
+    # ? ========= Optional Configurations =========
 
     # add .vscode for workspace configurations
     if workspace:
