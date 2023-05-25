@@ -121,7 +121,7 @@ def edit_settings_file(project_name):
 def edit_urls_file(project_name):
     urls_path = os.path.join(project_name, "urls.py")
 
-    with open(urls_path, "r") as file:
+    with open(urls_path, "r+") as file:
         file_content_lines = file.readlines()
 
         import_line_index = None
@@ -132,26 +132,56 @@ def edit_urls_file(project_name):
                 break
 
         if import_line_index is not None:
-            new_content = file_content_lines[import_line_index:]
+            file_content_lines = file_content_lines[import_line_index:]
 
-            # new_content[1] = "from django.urls import path\n"
+            # file_content_lines[1] = "from django.urls import path\n"
             # adding include function to imports
-            new_content[1] = new_content[1][:-1] + ", include\n"
+            file_content_lines[1] = file_content_lines[1][:-1] + ", include\n"
 
             # # adding two new imports
-            new_content.insert(2, "\n")
-            new_content.insert(2, "\n")
-            new_content.insert(2, "from django.conf.urls.static import static\n")
-            new_content.insert(2, "from django.conf import settings\n")
+            file_content_lines.insert(2, "\n")
+            file_content_lines.insert(2, "\n")
+            file_content_lines.insert(2, "from django.conf.urls.static import static\n")
+            file_content_lines.insert(2, "from django.conf import settings\n")
 
-            new_content.append("\n")
-            new_content.append("if settings.DEBUG:\n")
-            new_content.append(
+            file_content_lines.append("\n")
+            file_content_lines.append("if settings.DEBUG:\n")
+            file_content_lines.append(
                 "\turlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)\n"
             )
 
-            with open(urls_path, "w") as writeable_file:
-                writeable_file.writelines(new_content)
+        file.seek(0)
+
+        file.writelines(file_content_lines)
+
+
+def edit_wsgi_file(project_name):
+
+    wsgi_path = os.path.join(project_name, "wsgi.py")
+
+    with open(wsgi_path, "r+") as file:
+        file_content_lines = file.readlines()
+
+        import_line_index = None
+
+        for index, line in enumerate(file_content_lines):
+            if line.count("get_wsgi_application") > 0:
+                import_line_index = index
+                break
+
+        if import_line_index is not None:
+
+            file_content_lines.insert(import_line_index, "import dotenv\n")
+
+            file_content_lines.insert(
+                import_line_index + 2,
+                "dotenv.read_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env'))\n",
+            )
+            file_content_lines.insert(import_line_index + 2, "\n")
+
+        file.seek(0)
+
+        file.writelines(file_content_lines)
 
 
 def add_gitignore_file():

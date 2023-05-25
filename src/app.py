@@ -1,10 +1,12 @@
 from management.controller import SysytemControlWithPackage
 from common.project import common_actions_func
 from app_windows.cdn_pkgs_window import cdn_packages_main, cdn_choices_menu
-from app_windows.tailwind_plugins_window import tailwind_plugins_main, tailwind_plugins_choices_menu
+from app_windows.tailwind_plugins_window import (
+    tailwind_plugins_main,
+    tailwind_plugins_choices_menu,
+)
 from app_windows.extra_choices_window import extra_main
 import curses
-
 
 
 def main_app_function():

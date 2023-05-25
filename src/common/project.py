@@ -4,23 +4,25 @@ try:
     from .functions import (
         edit_settings_file,
         edit_urls_file,
+        edit_wsgi_file,
         add_gitignore_file,
         add_vscode_workspace,
         add_readme_file,
         add_env_file,
         add_git_repo,
-        env_file_configurations
+        env_file_configurations,
     )
 except ImportError:
     from functions import (
         edit_settings_file,
         edit_urls_file,
+        edit_wsgi_file,
         add_gitignore_file,
         add_vscode_workspace,
         add_readme_file,
         add_env_file,
         add_git_repo,
-        env_file_configurations
+        env_file_configurations,
     )
 
 
@@ -34,6 +36,9 @@ def common_actions_func(project_name: str, workspace: bool, git: bool):
 
     # edit urls.py
     edit_urls_file(project_name)
+
+    # edit wsgi.py
+    edit_wsgi_file(project_name)
 
     # add .gitignore file
     add_gitignore_file()
